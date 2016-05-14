@@ -1,4 +1,4 @@
-package es.uvigo.esei.amchartsJava.export.constants;
+package es.uvigo.esei.amchartsjava.export.constants;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -19,12 +19,16 @@ import es.uvigo.esei.amchartsJava.core.constants.lang.I18n;
 public final class ExportConfig {
 
     private static final Properties EXPORTCONFIG = new Properties();
+    
+    private ExportConfig(){
+    	
+    }
 
     static {
     		
 			try {
 				//load url properties independent mode debug/release
-				String OS = System.getProperty("os.name").toLowerCase();
+				final String OS = System.getProperty("os.name").toLowerCase();
 				URL localURL;
 				if(OS.indexOf("win")>=0){
 					localURL = new URL(URLDecoder.decode("file:/"+Paths.get(".").toAbsolutePath().normalize().toString() + "\\resources\\export.properties","UTF-8" ));
@@ -52,8 +56,9 @@ public final class ExportConfig {
      * @return String Value asocciated to parameter of configuration.
      */
     public static String getString(final String key) {
-        if (EXPORTCONFIG.containsKey(key))
+        if (EXPORTCONFIG.containsKey(key)){
             return EXPORTCONFIG.getProperty(key);
+        }
 
         throw new RuntimeException(
             "'" + key + "' "+I18n.get("ConfigKeyException")

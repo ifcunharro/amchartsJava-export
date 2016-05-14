@@ -1,4 +1,4 @@
-package es.uvigo.esei.amchartsJava.export;
+package es.uvigo.esei.amchartsjava.export;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -15,10 +15,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import es.uvigo.esei.amchartsJava.core.controllers.charts.AmChartController;
 import es.uvigo.esei.amchartsJava.core.validators.PropertyValidator;
-import es.uvigo.esei.amchartsJava.export.constants.ExportConstants;
-import es.uvigo.esei.amchartsJava.export.constants.lang.I18n;
-import es.uvigo.esei.amchartsJava.export.exceptions.ExportException;
-import es.uvigo.esei.amchartsJava.export.files.ExportIOUtils;
+import es.uvigo.esei.amchartsjava.export.constants.ExportConstants;
+import es.uvigo.esei.amchartsjava.export.constants.lang.I18n;
+import es.uvigo.esei.amchartsjava.export.exceptions.ExportException;
+import es.uvigo.esei.amchartsjava.export.files.ExportIOUtils;
 
 /**
  * This class generate all neccesary to amcharts report or to add to your report.
@@ -36,6 +36,10 @@ public class Report {
 		data.put("height", 400);
 	}
 	
+	public Report(){
+		
+	}
+	
 	/**
 	 * Get a basic report html with an unique div.
 	 * @param chart some chart AmCharts.
@@ -44,7 +48,7 @@ public class Report {
 	 * @throws ExportException chart is null
 	 */
 	@SuppressWarnings("unchecked")
-	public Document getBasicReport(AmChartController<?> chart) throws IOException, ExportException{
+	public Document getBasicReport(final AmChartController<?> chart) throws IOException, ExportException{
 		if(chart == null){
 			throw new ExportException(I18n.get("NullChartException"));
 		}
@@ -52,7 +56,7 @@ public class Report {
 		Document template = ExportIOUtils.getDocument();
 		Element head = template.head();
 		template.title(data.get("title").toString());
-		List<String> css = (List<String>) data.get("filesCss");
+		final List<String> css = (List<String>) data.get("filesCss");
 		if(css != null){
 			for(String fileCss:css){
 				head.append(ExportConstants.LINKCSS.replace("FILE", fileCss));
@@ -62,14 +66,15 @@ public class Report {
 			head.append(fileJs);
 		}
 		
-		List<String> config =  getConfigAmCharts(chart);
+		final List<String> config =  getConfigAmCharts(chart);
 		
 		StringBuilder builder = new StringBuilder();
 		
 		builder.append(config.get(0)+System.lineSeparator());
 		
 		for(int i=1;i<config.size()-1;i++){
-			builder.append("\t  "+config.get(i)+System.lineSeparator());
+			builder.append("\t  ");
+			builder.append(config.get(i)+System.lineSeparator());
 		}
 		builder.append("\t"+config.get(config.size()-1));
 		head.append(ExportConstants
@@ -107,14 +112,14 @@ public class Report {
 	 * @throws ExportException chart is null or html doesn't contain a div with id equals to divChart
 	 */
 	@SuppressWarnings("unchecked")
-	public Document updateReport(AmChartController<?> chart, Document doc) throws ExportException{
+	public Document updateReport(final AmChartController<?> chart, Document doc) throws ExportException{
 		if(chart == null){
 			throw new ExportException(I18n.get("NullChartException"));
 		}
 		if(doc == null){
 			return null;
 		}
-		String idChart = data
+		final String idChart = data
 				.get("divId")
 				.toString()
 				.substring(1, 
@@ -123,13 +128,13 @@ public class Report {
 						.toString()
 						.length()-1
 				);
-		Element divChart = doc.getElementById(idChart);
+		final Element divChart = doc.getElementById(idChart);
 		if(divChart == null){
 			throw new ExportException(I18n.get("DivChartException"));
 		}
-		Element head = doc.head();
-		String title = data.get("title").toString();
-		if(!title.equals("Report amchartsJava")){
+		final Element head = doc.head();
+		final String title = data.get("title").toString();
+		if(!"Report amchartsJava".equals(title)){
 			doc.title(title);
 		}
 		List<String> css = (List<String>) data.get("filesCss");
@@ -142,14 +147,15 @@ public class Report {
 			head.append(fileJs);
 		}
 		
-		List<String> config =  getConfigAmCharts(chart);
+		final List<String> config =  getConfigAmCharts(chart);
 		
 		StringBuilder builder = new StringBuilder();
 		
 		builder.append(config.get(0)+System.lineSeparator());
 		
 		for(int i=1;i<config.size()-1;i++){
-			builder.append("\t  "+config.get(i)+System.lineSeparator());
+			builder.append("\t  ");
+			builder.append(config.get(i)+System.lineSeparator());
 		}
 		builder.append("\t"+config.get(config.size()-1));
 		head.append(ExportConstants
@@ -178,7 +184,7 @@ public class Report {
 	 * Add a title to html report.
 	 * @param title Text of html title.
 	 */
-	public void setTitle(String title){
+	public void setTitle(final String title){
 		if(PropertyValidator.isValidString(title)){
 			data.put("title", title);
 		}
@@ -188,7 +194,7 @@ public class Report {
 	 * Add names of your css files.
 	 * @param cssFiles lists of css file names
 	 */
-	public void addFilesCss(List<String> cssFiles){
+	public void addFilesCss(final List<String> cssFiles){
 		if(cssFiles != null){
 			data.put("filesCss", cssFiles);
 		}
@@ -207,7 +213,7 @@ public class Report {
 	 * Default: chartdiv.
 	 * @param idDiv Div id.
 	 */
-	public void setDivChart(String idDiv){
+	public void setDivChart(final String idDiv){
 		if(PropertyValidator.isValidString(idDiv)){
 			data.put("divId", idDiv);
 		}
@@ -221,7 +227,7 @@ public class Report {
 	 * Set width div chart.
 	 * @param divChartWidth width in pixels.
 	 */
-	public void setWidth(Integer divChartWidth){
+	public void setWidth(final Integer divChartWidth){
 		if(divChartWidth != null && divChartWidth>0){
 			data.put("width", divChartWidth);
 		}
@@ -235,7 +241,7 @@ public class Report {
 	 * Set height div chart.
 	 * @param divChartHeight height in pixels.
 	 */
-	public void setHeight(Integer divChartHeight){
+	public void setHeight(final Integer divChartHeight){
 		if(divChartHeight != null && divChartHeight>0){
 			data.put("height", divChartHeight);
 		}
@@ -250,7 +256,7 @@ public class Report {
 		List<String> jsFiles = new LinkedList<>();
 		jsFiles.add(ExportConstants.AMCHARTSJS_TEMPLATE.replace("FILEJS", 
 				ExportConstants.AMCHARTSJS_FILENAME));
-		String typeChart = chart.getType();
+		final String typeChart = chart.getType();
 		switch (typeChart) {
 			//serial, pie, xy, radar, funnel, gauge;	
 			case "serial":
@@ -279,7 +285,7 @@ public class Report {
 				break;
 		}
 		
-		String theme = chart.getTheme();
+		final String theme = chart.getTheme();
 		
 		if(theme != null){
 			if(theme.endsWith(".js")){
@@ -288,7 +294,7 @@ public class Report {
 				jsFiles.add(ExportConstants.THEMESJS.replace("FILEJS", theme+".js"));
 			}
 		}
-		Object export = chart.getExport();
+		final Object export = chart.getExport();
 		if(export != null){
 			jsFiles.add(ExportConstants.EXPORT);
 			jsFiles.add(ExportConstants.EXPORT_DEFAULT);
@@ -306,10 +312,10 @@ public class Report {
 	private List<String> getConfigAmCharts(AmChartController<?> chart){
 		List<String> linesConfig = null;
 		if(chart != null){
-			ObjectMapper mapper = new ObjectMapper();
+			final ObjectMapper mapper = new ObjectMapper();
 			
 			try {
-				String config = mapper
+				final String config = mapper
 						.writerWithDefaultPrettyPrinter()
 						.writeValueAsString(chart);
 				

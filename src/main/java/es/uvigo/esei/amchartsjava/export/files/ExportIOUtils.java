@@ -1,4 +1,4 @@
-package es.uvigo.esei.amchartsJava.export.files;
+package es.uvigo.esei.amchartsjava.export.files;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -18,22 +18,26 @@ import org.jsoup.nodes.Document;
 
 import es.uvigo.esei.amchartsJava.core.constants.paths.AmchartsJavaPaths;
 import es.uvigo.esei.amchartsJava.core.files.AmChartsIOUtils;
-import es.uvigo.esei.amchartsJava.export.constants.ExportConstants;
-import es.uvigo.esei.amchartsJava.export.constants.lang.I18n;
+import es.uvigo.esei.amchartsjava.export.constants.ExportConstants;
+import es.uvigo.esei.amchartsjava.export.constants.lang.I18n;
 
 /**
  * This class load template report and save report html.
  * @author Iago Fernández Cuñarro
  *
  */
-public class ExportIOUtils {
+public final class ExportIOUtils {
+	
+	private ExportIOUtils(){
+		
+	}
 
 	/**
 	 * Save report.
 	 * @param file File where save html.
 	 * @param writer Text html.
 	 */
-	public static void saveReport(File file, Document writer){
+	public static void saveReport(final File file, final Document writer){
 		
 		saveLibAmchartsToReportDirectory(file);
 		try (FileOutputStream fos = new FileOutputStream(file)) {
@@ -73,7 +77,7 @@ public class ExportIOUtils {
 	 * Copy amcharts folder to report directory
 	 * @param file report file html
 	 */
-	private static void saveLibAmchartsToReportDirectory(File file){
+	private static void saveLibAmchartsToReportDirectory(final File file){
 		URL amchartsPATH = AmChartsIOUtils.class.getProtectionDomain()
 				.getCodeSource()
 				.getLocation();
@@ -85,8 +89,8 @@ public class ExportIOUtils {
 			e1.printStackTrace();
 		}
 		try {
-			File srcDir = new File(amchartsPATH.getPath()).getParentFile();
-			File destDir = new File(file.getParentFile(),
+			final File srcDir = new File(amchartsPATH.getPath()).getParentFile();
+			final File destDir = new File(file.getParentFile(),
 						   		new File(amchartsPATH.getPath())
 								.getParentFile()
 								.getName()

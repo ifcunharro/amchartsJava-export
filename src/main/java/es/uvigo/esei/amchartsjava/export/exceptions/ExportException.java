@@ -1,4 +1,4 @@
-package es.uvigo.esei.amchartsJava.export.exceptions;
+package es.uvigo.esei.amchartsjava.export.exceptions;
 
 
 /**
@@ -16,7 +16,7 @@ public class ExportException extends Exception {
 	 * @param message
 	 *            String, custom message.
 	 */
-	public ExportException(String message) {
+	public ExportException(final String message) {
 		super(message);
 	}
 

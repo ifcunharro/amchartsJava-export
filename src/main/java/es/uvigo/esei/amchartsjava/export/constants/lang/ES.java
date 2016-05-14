@@ -1,7 +1,7 @@
-package es.uvigo.esei.amchartsJava.export.constants.lang;
+package es.uvigo.esei.amchartsjava.export.constants.lang;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import es.uvigo.esei.amchartsJava.core.constants.lang.Idiom;
 
@@ -12,7 +12,7 @@ import es.uvigo.esei.amchartsJava.core.constants.lang.Idiom;
  */
 public final class ES implements Idiom {
 
-	private static Map<String,String> textsES = new HashMap<String,String>();
+	private static Map<String,String> textsES = new ConcurrentHashMap<String,String>();
 	
 	static{
 		textsES.put("NullChartException", "No puedes exportar un chart nulo");
@@ -41,7 +41,7 @@ public final class ES implements Idiom {
 	 * @param key Key asociated to text searched.
 	 * @return String Text searched.
 	 */
-	public String get(String key){
+	public String get(final String key){
 		return  textsES.get(key);
 	}
 	

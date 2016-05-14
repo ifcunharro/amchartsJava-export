@@ -1,4 +1,4 @@
-package es.uvigo.esei.amchartsJava.export.principal;
+package es.uvigo.esei.amchartsjava.export.principal;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,9 +10,9 @@ import org.jsoup.nodes.Document;
 import es.uvigo.esei.amchartsJava.core.constants.config.DefaultConfigCharts;
 import es.uvigo.esei.amchartsJava.core.controllers.charts.AmSerialChartController;
 import es.uvigo.esei.amchartsJava.core.files.AmChartsIOUtils;
-import es.uvigo.esei.amchartsJava.export.Report;
-import es.uvigo.esei.amchartsJava.export.exceptions.ExportException;
-import es.uvigo.esei.amchartsJava.export.files.ExportIOUtils;
+import es.uvigo.esei.amchartsjava.export.Report;
+import es.uvigo.esei.amchartsjava.export.exceptions.ExportException;
+import es.uvigo.esei.amchartsjava.export.files.ExportIOUtils;
 
 public class Prueba {
 	

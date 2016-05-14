@@ -1,4 +1,4 @@
-package es.uvigo.esei.amchartsJava.export.constants;
+package es.uvigo.esei.amchartsjava.export.constants;
 
 import es.uvigo.esei.amchartsJava.core.constants.paths.AmchartsJavaPaths;
 
@@ -8,11 +8,7 @@ import es.uvigo.esei.amchartsJava.core.constants.paths.AmchartsJavaPaths;
  * @author Iago Fernández Cuñarro
  *
  */
-public class ExportConstants {
-	
-	private ExportConstants(){
-		
-	}
+public final class ExportConstants {
 	
 	/**
 	 * Script to make chart
@@ -100,6 +96,10 @@ public class ExportConstants {
 		}else{
 			REPORT_TEMPLATE_PATH = ExportConfig.getString("releaseTemplatePath");
 		}
+	}
+	
+	private ExportConstants(){
+		
 	}
 
 }

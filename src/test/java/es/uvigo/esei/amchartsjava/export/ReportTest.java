@@ -1,7 +1,9 @@
-package es.uvigo.esei.amchartsJava.export;
+package es.uvigo.esei.amchartsjava.export;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 
@@ -13,9 +15,9 @@ import org.junit.rules.ExpectedException;
 
 import es.uvigo.esei.amchartsJava.core.constants.config.Config;
 import es.uvigo.esei.amchartsJava.core.controllers.charts.AmSerialChartController;
-import es.uvigo.esei.amchartsJava.export.constants.ExportConstants;
-import es.uvigo.esei.amchartsJava.export.exceptions.ExportException;
-import es.uvigo.esei.amchartsJava.export.files.ExportIOUtils;
+import es.uvigo.esei.amchartsjava.export.constants.ExportConstants;
+import es.uvigo.esei.amchartsjava.export.exceptions.ExportException;
+import es.uvigo.esei.amchartsjava.export.files.ExportIOUtils;
 
 public class ReportTest {
 	
@@ -35,11 +37,11 @@ public class ReportTest {
 		Element divChart = report.getElementById(rep.getDivChart());
 		assertEquals("Report amchartsJava",report.title());
 		String head = report.head().toString();
-		assertEquals(true,head.contains(ExportConstants.EXPORT));
-		assertEquals(true,head.contains(ExportConstants.EXPORT_DEFAULT));
-		assertEquals(true,divChart != null);
-		assertEquals(true,divChart.attr("style").contains(rep.getHeight().toString()));
-		assertEquals(true,divChart.attr("style").contains(rep.getWidth().toString()));
+		assertTrue(head.contains(ExportConstants.EXPORT));
+		assertTrue(head.contains(ExportConstants.EXPORT_DEFAULT));
+		assertNotNull(divChart);
+		assertTrue(divChart.attr("style").contains(rep.getHeight().toString()));
+		assertTrue(divChart.attr("style").contains(rep.getWidth().toString()));
 	}
 	
 	@Test
@@ -53,7 +55,7 @@ public class ReportTest {
 				thrown.expectMessage("No puedes exportar un chart nulo");
 				break;
 		}
-		Report rep = new Report();
+		final Report rep = new Report();
 		try {
 			rep.getBasicReport(null);
 		} catch (IOException e) {
