@@ -1,4 +1,4 @@
-package es.uvigo.esei.amchartsjava.export;
+package es.uvigo.esei.amchartsJava.export;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -15,9 +15,9 @@ import org.junit.rules.ExpectedException;
 
 import es.uvigo.esei.amchartsJava.core.constants.config.Config;
 import es.uvigo.esei.amchartsJava.core.controllers.charts.AmSerialChartController;
-import es.uvigo.esei.amchartsjava.export.constants.ExportConstants;
-import es.uvigo.esei.amchartsjava.export.exceptions.ExportException;
-import es.uvigo.esei.amchartsjava.export.files.ExportIOUtils;
+import es.uvigo.esei.amchartsJava.export.constants.ExportConstants;
+import es.uvigo.esei.amchartsJava.export.exceptions.ExportException;
+import es.uvigo.esei.amchartsJava.export.files.ExportIOUtils;
 
 public class ReportTest {
 	

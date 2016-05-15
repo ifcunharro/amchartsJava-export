@@ -1,4 +1,4 @@
-package es.uvigo.esei.amchartsjava.export.exceptions;
+package es.uvigo.esei.amchartsJava.export.exceptions;
 
 
 /**

@@ -1,4 +1,4 @@
-package es.uvigo.esei.amchartsjava.export;
+package es.uvigo.esei.amchartsJava.export;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -15,10 +15,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import es.uvigo.esei.amchartsJava.core.controllers.charts.AmChartController;
 import es.uvigo.esei.amchartsJava.core.validators.PropertyValidator;
-import es.uvigo.esei.amchartsjava.export.constants.ExportConstants;
-import es.uvigo.esei.amchartsjava.export.constants.lang.I18n;
-import es.uvigo.esei.amchartsjava.export.exceptions.ExportException;
-import es.uvigo.esei.amchartsjava.export.files.ExportIOUtils;
+import es.uvigo.esei.amchartsJava.export.constants.ExportConstants;
+import es.uvigo.esei.amchartsJava.export.constants.lang.I18n;
+import es.uvigo.esei.amchartsJava.export.exceptions.ExportException;
+import es.uvigo.esei.amchartsJava.export.files.ExportIOUtils;
 
 /**
  * This class generate all neccesary to amcharts report or to add to your report.

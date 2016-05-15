@@ -1,4 +1,4 @@
-package es.uvigo.esei.amchartsjava.export.constants;
+package es.uvigo.esei.amchartsJava.export.constants;
 
 import es.uvigo.esei.amchartsJava.core.constants.paths.AmchartsJavaPaths;
 

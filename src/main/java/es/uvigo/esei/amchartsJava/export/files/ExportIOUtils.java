@@ -1,4 +1,4 @@
-package es.uvigo.esei.amchartsjava.export.files;
+package es.uvigo.esei.amchartsJava.export.files;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -18,8 +18,8 @@ import org.jsoup.nodes.Document;
 
 import es.uvigo.esei.amchartsJava.core.constants.paths.AmchartsJavaPaths;
 import es.uvigo.esei.amchartsJava.core.files.AmChartsIOUtils;
-import es.uvigo.esei.amchartsjava.export.constants.ExportConstants;
-import es.uvigo.esei.amchartsjava.export.constants.lang.I18n;
+import es.uvigo.esei.amchartsJava.export.constants.ExportConstants;
+import es.uvigo.esei.amchartsJava.export.constants.lang.I18n;
 
 /**
  * This class load template report and save report html.

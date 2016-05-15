@@ -1,4 +1,4 @@
-package es.uvigo.esei.amchartsjava.export.constants.lang;
+package es.uvigo.esei.amchartsJava.export.constants.lang;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
