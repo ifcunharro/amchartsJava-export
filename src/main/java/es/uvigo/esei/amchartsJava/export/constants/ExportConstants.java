@@ -14,7 +14,7 @@ public final class ExportConstants {
 	 * Script to make chart
 	 */
 	public static final String SCRIPT="<script>"+System.lineSeparator()+"\tvar chart = "
-			+ "AmCharts.makeChart(AMCHARTS_DIVID,AMCHARTS_CONFIG"
+			+ "AmCharts.makeChart(\"AMCHARTS_DIVID\",AMCHARTS_CONFIG"
 			+System.lineSeparator()+"  );"
 			+System.lineSeparator()+"  </script>";
 	
