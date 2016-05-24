@@ -62,6 +62,12 @@ public class Report {
 				head.append(ExportConstants.LINKCSS.replace("FILE", fileCss));
 			}
 		}
+		
+		final Object export = chart.getExport();
+		if(export != null){
+			head.append(ExportConstants.EXPORTCSS);
+		}
+		
 		for(String fileJs: getJSFilesAmCharts(chart)){
 			head.append(fileJs);
 		}
